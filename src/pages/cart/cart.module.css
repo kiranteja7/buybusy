@@ -1,0 +1,11 @@
+
+
+.cartContainer{
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+}
+
+.noItems{
+    font-size: 3rem;
+}

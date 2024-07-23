@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
+import { NavBar } from './components/nav/nav';
+import { Home } from './pages/Home/Home';
+import CustomProductProvider from './productContext';
+import { SignIn } from './pages/SignIn/signIn';
+import { Register } from './pages/register/register';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { Cart } from './pages/cart/cart';
+import { Orders } from './pages/orders/orders';
 
 function App() {
+
+  const router = createBrowserRouter([
+     {
+      path: '/',
+      element: <NavBar/>,
+      children: [
+        {
+          index : true, element: <Home/>
+        },
+        {
+          path: '/signin',
+          element: <SignIn/>
+         }, 
+         {
+          path: '/register',
+          element : <Register/>
+         },{
+          path: '/cart',
+          element : <Cart/>
+         },
+         {
+          path : '/myorders',
+          element: <Orders/>
+         }
+      ]
+     }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CustomProductProvider>
+          <ToastContainer/>
+    <RouterProvider router={router}/>
+    </CustomProductProvider>
   );
 }
 

@@ -1,0 +1,16 @@
+
+.input{
+    padding: 15px 45px;
+    border-radius: 10px;
+    border: 1px solid purple;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.searchContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
+}

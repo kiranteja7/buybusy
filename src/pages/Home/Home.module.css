@@ -1,0 +1,29 @@
+body{
+  overflow-x: hidden;
+}
+
+.bodyContainer{
+    display: flex;
+    margin: 3px;
+    width: 100%;
+    flex-direction: row;
+}
+
+.filterContainer{
+    width: 25%;
+    margin-left: 10px;
+    margin-right: 40px;
+    position: fixed;
+}
+
+.cardsContainer{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: start;
+    height: auto;
+    flex-wrap: wrap;
+    position: absolute;
+    margin-left: 26rem;
+}

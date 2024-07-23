@@ -1,0 +1,58 @@
+
+.filterContainer{
+    height: auto;
+    margin: 2px;
+    background-color: #f0f0fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formContainer{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 100%;
+}
+
+.names{
+    text-align: center;
+}
+
+.pricing{
+    margin: 10px auto;
+}
+
+.rangeInput{
+    margin: 3px auto;
+    background: #ddd;
+    color: #ddd;
+    width: 70%;
+    height: 6px;
+    border-radius: 4px;
+}
+
+.categoryContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 60%;
+    margin: 5px auto;
+}
+
+.checkBox{
+    transform: scale(1.5);
+    margin-right: 5px;
+}
+
+.labels{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.categoryElements{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}

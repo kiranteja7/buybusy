@@ -1,0 +1,17 @@
+
+
+.priceContainer{
+    display: flex;
+    flex-direction: column;
+    width: 16rem;
+    height: auto;
+    margin: 5rem;
+    align-items: center;
+}
+
+.totalPrice{
+    color: #224957;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
