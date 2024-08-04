@@ -9,6 +9,10 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { Cart } from './pages/cart/cart';
 import { Orders } from './pages/orders/orders';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import { InitializeAuth } from './redux/intializeAuth';
+// import { useEffect } from 'react';
 
 function App() {
 
@@ -38,11 +42,21 @@ function App() {
       ]
      }
   ])
+
+
+    InitializeAuth();
+  
   return (
-    <CustomProductProvider>
-          <ToastContainer/>
-    <RouterProvider router={router}/>
-    </CustomProductProvider>
+    // <CustomProductProvider>
+    //       <ToastContainer/>
+    // <RouterProvider router={router}/>
+    // </CustomProductProvider>
+     <CustomProductProvider>
+    <Provider store={store}>
+      <ToastContainer />
+      <RouterProvider router={router} />
+    </Provider>
+     </CustomProductProvider>
   );
 }
 

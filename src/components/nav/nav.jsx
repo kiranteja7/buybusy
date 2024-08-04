@@ -5,15 +5,24 @@ import cart from '../../assets/cart.png';
 import door from '../../assets/door.png';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useValue } from '../../productContext';
+import { handleUserSignOut, isLoggedIn } from '../../redux/reducers/userReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 export const NavBar = () => {
 
-  const {loggedIn, handleLogout} = useValue();
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const loggedIn = useSelector(isLoggedIn);
+  
   const redirectToHome = () =>{
       navigate('/');
+  }
+
+  const signOut = async() =>{
+     await dispatch(handleUserSignOut()).unwrap();
+     navigate("/");
+     toast.success("User signed out successfully!");
   }
 
    return (
@@ -42,8 +51,8 @@ export const NavBar = () => {
               <img src={door} alt="register-login" className={styles.icons} />
               <Link to={loggedIn ? `/` : `/signin`}>
               <span className={styles.navElements} onClick={loggedIn ?
-                handleLogout : redirectToHome
-              }>{loggedIn? 'Logout': 'Login'}</span></Link>
+               signOut  : redirectToHome
+              }>{loggedIn ? 'Logout': 'Login'}</span></Link>
           </div>
       </div>
     </div>

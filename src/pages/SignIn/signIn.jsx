@@ -1,11 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './signIn.module.css';
-import { useValue } from '../../productContext';
+import { useDispatch } from 'react-redux';
+import { handleUsersignInAsync } from '../../redux/reducers/userReducer';
+import {  useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const SignIn = () =>{
 
-    const {user, setUser, handleSignIn} = useValue();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [user, setUser] = useState({email: "", password: ""});
+
+    const handleSignIn = (e) =>{
+        e.preventDefault();
+        dispatch(handleUsersignInAsync(user));
+        setUser({email : "", password: ""});
+        toast.success("User signed in successfully!");
+    }
 
     return (
         <>

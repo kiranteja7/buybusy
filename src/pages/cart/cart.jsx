@@ -1,25 +1,33 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Cards } from "../../components/cards/cards";
 import { Price } from "../../components/price/price";
-import { useValue } from "../../productContext"
+// import { useValue } from "../../productContext"
 import styles from '../Home/Home.module.css';
 import style from './cart.module.css';
+import { cartSelector, fetchCartAsync } from "../../redux/reducers/cartReducer";
+import { useEffect } from "react";
+import { userId } from "../../redux/reducers/userReducer";
 
 
 export const Cart = () =>{
-  
-    const {cart} = useValue();
+
+    const cart = useSelector(cartSelector);
+    const user = useSelector(userId);
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(fetchCartAsync(user));
+    },[dispatch, user]);
 
     return (
     <div className={style.cartContainer}>
-    {cart.length === 0 ? <span className={style.noItems}>No Cart Items</span>: 
+    {cart==null ? <span className={style.noItems}>No Cart Items</span>: 
         <>
     <Price/>
     <div className={styles.cardsContainer}>
        {
-      cart.map((cartItem)=>(
-        cartItem.orders.map((prod, i)=>(
+      cart.map((prod, i)=>(
           <Cards d={prod} key={i} cartPage={true}/>
-        ))
        )
       )}
       

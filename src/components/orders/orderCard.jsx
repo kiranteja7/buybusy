@@ -1,10 +1,25 @@
-import { useValue } from '../../productContext';
+import { useDispatch, useSelector } from 'react-redux';
+
 import styles from './orders.module.css';
+import { ordersSelector, fetchOrderCart } from '../../redux/reducers/orderReducer';
+import { userId } from '../../redux/reducers/userReducer';
+import { useEffect } from 'react';
 
 
 export const Order = () =>{
 
-  const { showOrders } = useValue();
+  const dispatch = useDispatch();
+
+  const user = useSelector(userId);
+
+  useEffect(()=>{
+    dispatch(fetchOrderCart(user));
+ }, [dispatch, user]);
+
+
+  const showOrders = useSelector(ordersSelector);
+
+
 
   if (!showOrders || showOrders.length === 0) {
     return <div>No Orders Available</div>;
